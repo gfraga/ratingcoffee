@@ -16,7 +16,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {  
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {        
 
     return new Scaffold(      
       appBar: new AppBar(
@@ -55,28 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         )
       ) ,  
-      body: new Center(
-        child: new Column(          
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            ListView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(20.0),                                
-                children: <Widget>[
-                  ListTile(
-                    title: Text('Winter')
-                  ),
-                  ListTile(
-                    title: Text('Ademílson')
-                  ),
-                  ListTile(
-                    title: Text('61')
-                  )                       
-                ],
-            )
-          ],
-        ),
-      )
+      body: new ListView.builder(
+                          itemBuilder: (BuildContext context, int index) =>
+                                      Text(widget.coffeesData[index].name),
+                            itemCount: widget.coffeesData.length
+              ) 
     );
   }
 }

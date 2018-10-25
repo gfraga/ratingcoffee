@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
     StreamBuilder builder = new StreamBuilder(
       stream: Firestore.instance.collection('coffee').snapshots(),
       builder: (context, asyncSnapshot) {
-        var documents = asyncSnapshot.data?.documents ?? [];
-        var coffeeList = documents.map((asyncSnapshot) => CoffeeData.from(asyncSnapshot)).toList();
+        var documents = asyncSnapshot.data?.documents ?? [];        
+        List<CoffeeData> coffeeList = documents.map<CoffeeData>((asyncSnapshot) => 
+                                                                CoffeeData.from(asyncSnapshot)).toList();
         return MyHomePage('Lista de Cafés', coffeeList);
         },
     );

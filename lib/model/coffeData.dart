@@ -7,7 +7,7 @@ class CoffeeData {
 
   String name;
   String farm;
-  CoffeeTypeData type;
+  DocumentReference type;
   String coffeePicture;
   final String defaultImage = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj85O7H25jeAhWMmeAKHeyhDOYQjRx6BAgBEAU&url=https%3A%2F%2Fscience.howstuffworks.com%2Finnovation%2Fedible-innovations%2Fcoffee1.htm&psig=AOvVaw1FEQ3kFtxhBPzA5logqUen&ust=1540251876540772';
 
@@ -19,7 +19,7 @@ class CoffeeData {
 
     this.name ??= 'Winter';
     this.farm ??= 'Sul Minas';
-    this.type ??= CoffeeTypeData.DefaultType();
+    this.type ??= null;
     this.coffeePicture ??= defaultImage;
   }
 
