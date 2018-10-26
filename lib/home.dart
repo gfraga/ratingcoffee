@@ -13,8 +13,9 @@ class MyHomePage extends StatefulWidget {
 
 }
 
-class _MyHomePageState extends State<MyHomePage> {  
 
+class _MyHomePageState extends State<MyHomePage> {    
+   
   @override
   Widget build(BuildContext context) {        
 
@@ -55,11 +56,28 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         )
       ) ,  
-      body: new ListView.builder(
-                          itemBuilder: (BuildContext context, int index) =>
-                                      Text(widget.coffeesData[index].name),
+      body: new ListView.separated(
+                            separatorBuilder: (BuildContext context, int index) => Divider(height: 10.0,),
+                            itemBuilder: (BuildContext context, int index) =>                                                        
+                            ListTile(
+                              leading: Icon(Icons.dns),
+                              title: Text(widget.coffeesData[index].name),
+                              subtitle: Text(widget.coffeesData[index].farm),                              
+                            ),
                             itemCount: widget.coffeesData.length
-              ) 
+              ),
+              floatingActionButton: new FloatingActionButton(
+                elevation: 0.0,
+                child: new Icon(Icons.add_circle),
+                onPressed: (){
+                  showDialog(context: context, child:
+                        new AlertDialog(
+                        title: new Text("Create new Coffee"),
+                        content: new Text("Formulário"),
+                      )
+                    );
+                }
+              ),
     );
   }
 }
