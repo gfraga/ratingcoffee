@@ -15,15 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    StreamBuilder builder = new StreamBuilder(
-      stream: Firestore.instance.collection('coffee').snapshots(),
-      builder: (context, asyncSnapshot) {
-        var documents = asyncSnapshot.data?.documents ?? [];        
-        List<CoffeeData> coffeeList = documents.map<CoffeeData>((asyncSnapshot) => 
-                                                                CoffeeData.from(asyncSnapshot)).toList();
-        return MyHomePage('Lista de Cafés', coffeeList);
-        },
-    );
+
 
     return new MaterialApp(
       title: 'Classificação de Cafés',
@@ -31,7 +23,7 @@ class MyApp extends StatelessWidget {
         //Set the theme of the App (Material Design)
         primarySwatch: Colors.brown,
       ),      
-      home: builder
+      home: MyHomePage('Lista de Cafés')
     );
   }
 }

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import './coffeeTypeData.dart';
 
 class CoffeeData {
 
-  final DocumentReference reference;
+  static CollectionReference _colReference = Firestore.instance.collection('coffee');
+  DocumentReference docReference;
 
   String name;
   String farm;
@@ -11,7 +11,11 @@ class CoffeeData {
   String coffeePicture;
   final String defaultImage = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwj85O7H25jeAhWMmeAKHeyhDOYQjRx6BAgBEAU&url=https%3A%2F%2Fscience.howstuffworks.com%2Finnovation%2Fedible-innovations%2Fcoffee1.htm&psig=AOvVaw1FEQ3kFtxhBPzA5logqUen&ust=1540251876540772';
 
-  CoffeeData.data(this.reference,
+  static CollectionReference colReference() {
+    return _colReference;
+  }
+
+  CoffeeData.data(this.docReference,
       [this.name,
       this.farm,
       this.type,
